@@ -40,7 +40,7 @@ describe("Signup", () => {
     })
 
     it.only('Izbor city-a', () => {
-        //bookingHotel.home.click()
+        bookingHotel.home.click()
         bookingHotel.hotels.click({ force: true })
         bookingHotel.selectDestination()
         bookingHotel.destinationSpin.filter(':visible').invoke('text').then((val) => {
