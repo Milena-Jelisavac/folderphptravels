@@ -11,6 +11,9 @@ class BookingHotel {
     get destionationInput () {
         return cy.get('#s2id_autogen2')
     }
+    get destinationSpin(){
+        return cy.get('.select2-chosen')
+    }
     get checkIn () {
         return cy.get("#checkin")
     }
@@ -34,6 +37,7 @@ class BookingHotel {
     get search (){
         return cy.get('button[type="submit"]').contains('Search')
     }
+   
     selectDestination() {
         cy.get('.select2-container').find('#s2id_autogen2').click({force: true}).type("New"," ", { force: true}).then(option => {
             cy.contains('New Delhi, India').click()

@@ -3,13 +3,14 @@
         "validFirstName":"Test",
         "validLastName":"Testeric",
         "validMobilePhoneNumber": 12345689,
-        "validEmail" : "test001253445@1gmail.com",
+        "validEmail" : "test00153445@1gmail.com",
         "validPassword" :"test1234",
         "validConPassword" : "test1234"
         
     },
 
     "Booking" :{
+        "destination":"New Delhi, India",
         "checkInData": "08/08/2021",
         "checkOutData" : "08/09/2021"
     
