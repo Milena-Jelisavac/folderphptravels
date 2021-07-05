@@ -3,7 +3,7 @@ class BookingHotel {
         return cy.get ("a[title='home']")
     }
     get hotels () {
-        return cy.get('#hotels')
+        return cy.get('.nav > :nth-child(1) > .text-center')
     }
     get destination (){
         return cy.get('.select2-container')

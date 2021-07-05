@@ -20,7 +20,10 @@ describe("Signup", () => {
 
     it('Uspesna registracija', () => {
         authHeader.myAccount.click()
-        authHeader.signUp.click()
+        authHeader.signUp.then(($name)=>{
+            expect ($name.text()).to.eql('Sign Up');
+        }).click({force: true})
+        cy.url().should('contains', '/register')
         cy.server();
         cy.route({
             method: 'POST',
@@ -39,9 +42,14 @@ describe("Signup", () => {
         cy.url().should("eq", "https://www.phptravels.net/account/")
     })
 
-    it.only('Izbor city-a', () => {
-        bookingHotel.home.click()
-        bookingHotel.hotels.click({ force: true })
+    it('Izbor city-a', () => {
+        bookingHotel.home.then(($name)=>{
+            expect($name.text()).to.eql('Home')
+        }).click()
+        // Sa eql ne radi
+        bookingHotel.hotels.then(($name)=>{
+            expect($name.text()).to.contains('Hotels')
+        }).click({ force: true })
         bookingHotel.selectDestination()
         bookingHotel.destinationSpin.filter(':visible').invoke('text').then((val) => {
             expect(strings.Booking.destination).to.equal(val);
@@ -58,8 +66,8 @@ describe("Signup", () => {
         bookingHotel.checkOut.invoke('val').then((text) => {
             expect(strings.Booking.checkOutData).to.equal(text);
         });
-        //Proveriti zasto ovaj nacin zapisa ne funkcionise
-        //bookingHotel.div.find(bookingHotel.plus).filter(':visible').first().click()
+        
+        
     })
     it("Broj odraslih i dece", () => {
         bookingHotel.increaseNumberOfAdults()
@@ -71,7 +79,9 @@ describe("Signup", () => {
             expect("1").to.equal(val);
         })
 
-        bookingHotel.search.click()
+        bookingHotel.search.then(($name)=>{
+            expect($name.text()).to.contains('Search')
+        }).click()
     })
 
 
